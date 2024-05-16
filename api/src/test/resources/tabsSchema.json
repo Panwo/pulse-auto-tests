@@ -1,0 +1,853 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/Welcome10Element"
+  },
+  "definitions": {
+    "Welcome10Element": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "body": {
+          "$ref": "#/definitions/Welcome10Body"
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "record": {
+          "$ref": "#/definitions/Record"
+        },
+        "requested_status": {
+          "$ref": "#/definitions/RequestedStatus"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "record",
+        "requested_status",
+        "uscn"
+      ],
+      "title": "Welcome10Element"
+    },
+    "Welcome10Body": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "guid": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "widget": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Widget"
+          }
+        },
+        "position": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Position"
+          }
+        },
+        "type": {
+          "type": "string"
+        },
+        "user_guid": {
+          "$ref": "#/definitions/UserGUID"
+        },
+        "cols": {
+          "type": "integer"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "source_guid": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "active",
+        "guid",
+        "position",
+        "title",
+        "type",
+        "user_guid",
+        "widget"
+      ],
+      "title": "Welcome10Body"
+    },
+    "Position": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "widget_guid": {
+          "type": "string"
+        },
+        "col": {
+          "type": "integer"
+        },
+        "row": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "col",
+        "row",
+        "widget_guid"
+      ],
+      "title": "Position"
+    },
+    "Widget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "body": {
+          "$ref": "#/definitions/WidgetBody"
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "$ref": "#/definitions/RequestedStatus"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "requested_status",
+        "uscn"
+      ],
+      "title": "Widget"
+    },
+    "WidgetBody": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "guid": {
+          "type": "string"
+        },
+        "label": {
+          "$ref": "#/definitions/Label"
+        },
+        "size_x": {
+          "type": "integer"
+        },
+        "size_y": {
+          "type": "integer"
+        },
+        "view": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BodyView"
+          }
+        },
+        "active_view": {
+          "type": "string"
+        },
+        "refresh_interval": {
+          "type": "integer"
+        },
+        "column_visibility": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ColumnVisibility"
+          }
+        },
+        "layout_guid": {
+          "type": "string"
+        },
+        "layout_body_hash": {
+          "type": "integer"
+        },
+        "user_guid": {
+          "$ref": "#/definitions/UserGUID"
+        },
+        "layout": {
+          "$ref": "#/definitions/Layout"
+        },
+        "layout_hash_id": {
+          "$ref": "#/definitions/HashID"
+        },
+        "hide_title": {
+          "type": "boolean"
+        },
+        "enable_agent_management": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "column_visibility",
+        "guid",
+        "hide_title",
+        "label",
+        "layout",
+        "layout_body_hash",
+        "layout_guid",
+        "layout_hash_id",
+        "size_x",
+        "size_y",
+        "user_guid",
+        "view"
+      ],
+      "title": "WidgetBody"
+    },
+    "ColumnVisibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "column_id": {
+          "$ref": "#/definitions/ColumnID"
+        },
+        "visibility": {
+          "$ref": "#/definitions/Visibility"
+        }
+      },
+      "required": [
+        "column_id",
+        "visibility"
+      ],
+      "title": "ColumnVisibility"
+    },
+    "Layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "definition": {
+          "$ref": "#/definitions/Definition"
+        },
+        "state": {
+          "$ref": "#/definitions/State"
+        },
+        "record": {
+          "$ref": "#/definitions/Record"
+        },
+        "hash_id": {
+          "$ref": "#/definitions/HashID"
+        }
+      },
+      "required": [
+        "definition",
+        "hash_id",
+        "state"
+      ],
+      "title": "Layout"
+    },
+    "Definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "layout_type": {
+          "$ref": "#/definitions/LayoutType"
+        },
+        "refresh_interval": {
+          "type": "integer"
+        },
+        "enable_delta_snapshots": {
+          "type": "boolean"
+        },
+        "column": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Column"
+          }
+        },
+        "collector_def": {
+          "$ref": "#/definitions/CollectorDef"
+        },
+        "guid": {
+          "type": "string"
+        },
+        "template_guid": {
+          "$ref": "#/definitions/TemplateGUID"
+        },
+        "proxy_access_object": {
+          "$ref": "#/definitions/ProxyAccessObject"
+        },
+        "allow_drill_down": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "collector_def",
+        "column",
+        "enable_delta_snapshots",
+        "guid",
+        "layout_type",
+        "refresh_interval",
+        "template_guid"
+      ],
+      "title": "Definition"
+    },
+    "CollectorDef": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "allowed_object_type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "allowed_object_type"
+      ],
+      "title": "CollectorDef"
+    },
+    "Column": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "category": {
+          "$ref": "#/definitions/Category"
+        },
+        "type": {
+          "$ref": "#/definitions/ColumnType"
+        },
+        "vt": {
+          "$ref": "#/definitions/VT"
+        },
+        "is_delta_key": {
+          "type": "boolean"
+        },
+        "selected_value": {
+          "$ref": "#/definitions/SelectedValue"
+        },
+        "hash_id": {
+          "$ref": "#/definitions/HashID"
+        },
+        "formula": {
+          "$ref": "#/definitions/Formula"
+        },
+        "format": {
+          "$ref": "#/definitions/Format"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "show_state_icon": {
+          "type": "boolean"
+        },
+        "statistic": {
+          "$ref": "#/definitions/Statistic"
+        }
+      },
+      "required": [
+        "hash_id",
+        "id",
+        "type",
+        "vt"
+      ],
+      "title": "Column"
+    },
+    "Formula": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/FormulaType"
+        },
+        "text": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "text",
+        "type"
+      ],
+      "title": "Formula"
+    },
+    "HashID": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "h0": {
+          "type": "integer"
+        },
+        "h1": {
+          "type": "integer"
+        },
+        "h2": {
+          "type": "integer"
+        },
+        "h3": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "h0",
+        "h1",
+        "h2",
+        "h3"
+      ],
+      "title": "HashID"
+    },
+    "SelectedValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/SelectedValueType"
+        },
+        "collector_object": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CollectorObject"
+          }
+        }
+      },
+      "required": [
+        "collector_object",
+        "type"
+      ],
+      "title": "SelectedValue"
+    },
+    "CollectorObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dbid": {
+          "type": "integer"
+        },
+        "tenant_dbid": {
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/definitions/CollectorObjectType"
+        },
+        "name": {
+          "type": "string"
+        },
+        "inclusion_type": {
+          "$ref": "#/definitions/InclusionType"
+        },
+        "tenant_name": {
+          "$ref": "#/definitions/TenantName"
+        }
+      },
+      "required": [
+        "dbid",
+        "inclusion_type",
+        "name",
+        "type"
+      ],
+      "title": "CollectorObject"
+    },
+    "Statistic": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "stat_type_name": {
+          "type": "string"
+        },
+        "notification_mode": {
+          "$ref": "#/definitions/NotificationMode"
+        },
+        "adm_software_reasons": {
+          "type": "boolean"
+        },
+        "adm_hardware_reasons": {
+          "type": "boolean"
+        },
+        "notification_interval": {
+          "type": "integer"
+        },
+        "adm_user_data": {
+          "type": "boolean"
+        },
+        "filter": {
+          "$ref": "#/definitions/Filter"
+        },
+        "insensitivity": {
+          "type": "integer"
+        },
+        "time_range": {
+          "type": "string"
+        },
+        "time_profile": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "notification_mode",
+        "stat_type_name"
+      ],
+      "title": "Statistic"
+    },
+    "ProxyAccessObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dbid": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "dbid"
+      ],
+      "title": "ProxyAccessObject"
+    },
+    "Record": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "timestamp": {
+          "type": "integer"
+        },
+        "username": {
+          "$ref": "#/definitions/Username"
+        }
+      },
+      "required": [
+        "timestamp",
+        "username"
+      ],
+      "title": "Record"
+    },
+    "State": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "requested_status": {
+          "$ref": "#/definitions/RequestedStatus"
+        },
+        "body_hash_1": {
+          "type": "integer"
+        },
+        "body_hash_2": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "bucket_id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "body_hash_1",
+        "body_hash_2",
+        "bucket_id",
+        "requested_status",
+        "uscn"
+      ],
+      "title": "State"
+    },
+    "BodyView": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "column_selector": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sorting": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Sorting"
+          }
+        },
+        "table_column_width": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TableColumnWidth"
+          }
+        },
+        "table_row_density": {
+          "type": "string"
+        },
+        "table_row_contrast": {
+          "type": "string"
+        },
+        "table_column_filter_enable": {
+          "type": "boolean"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "time_range": {
+          "type": "string"
+        },
+        "view": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ViewView"
+          }
+        },
+        "autoplay": {
+          "type": "boolean"
+        },
+        "row_selector": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RowSelector"
+          }
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "BodyView"
+    },
+    "RowSelector": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "k": {
+          "type": "string"
+        },
+        "v": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "integer"
+          }
+        }
+      },
+      "required": [
+        "k",
+        "v"
+      ],
+      "title": "RowSelector"
+    },
+    "Sorting": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "column_id": {
+          "type": "string"
+        },
+        "is_asc": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "is_asc"
+      ],
+      "title": "Sorting"
+    },
+    "TableColumnWidth": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "k": {
+          "type": "string"
+        },
+        "v": {
+          "type": "string",
+          "format": "integer"
+        }
+      },
+      "required": [
+        "k",
+        "v"
+      ],
+      "title": "TableColumnWidth"
+    },
+    "ViewView": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "column_selector": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "column_selector",
+        "type"
+      ],
+      "title": "ViewView"
+    },
+    "UserGUID": {
+      "type": "string",
+      "enum": [
+        "005056931883-855c-11e6-6f06-7ab68eb7"
+      ],
+      "title": "UserGUID"
+    },
+    "ColumnID": {
+      "type": "string",
+      "enum": [
+        "$",
+        "Current_Status_KVP",
+        "Service_Level_45s"
+      ],
+      "title": "ColumnID"
+    },
+    "Visibility": {
+      "type": "string",
+      "enum": [
+        "vVISIBLE",
+        "vHIDDENINWIDGET"
+      ],
+      "title": "Visibility"
+    },
+    "Label": {
+      "type": "string",
+      "enum": [
+        "Agent Login",
+        "Agent Group Status",
+        "Queue KPIs"
+      ],
+      "title": "Label"
+    },
+    "Category": {
+      "type": "string",
+      "enum": [
+        "ccDIMENSION",
+        "ccMEASURE"
+      ],
+      "title": "Category"
+    },
+    "Format": {
+      "type": "string",
+      "enum": [
+        "string",
+        "time",
+        "integer",
+        "percent"
+      ],
+      "title": "Format"
+    },
+    "FormulaType": {
+      "type": "string",
+      "enum": [
+        "ftPCREFERENCE",
+        "ftPCSCRIPT"
+      ],
+      "title": "FormulaType"
+    },
+    "InclusionType": {
+      "type": "string",
+      "enum": [
+        "itSELF",
+        "itGROUPMEMBERS"
+      ],
+      "title": "InclusionType"
+    },
+    "TenantName": {
+      "type": "string",
+      "enum": [
+        "Environment"
+      ],
+      "title": "TenantName"
+    },
+    "CollectorObjectType": {
+      "type": "string",
+      "enum": [
+        "SObjectAgent",
+        "SObjectGroupAgents",
+        "SObjectQueue"
+      ],
+      "title": "CollectorObjectType"
+    },
+    "SelectedValueType": {
+      "type": "string",
+      "enum": [
+        "stCOLLECTOROBJECT"
+      ],
+      "title": "SelectedValueType"
+    },
+    "Filter": {
+      "type": "string",
+      "enum": [
+        "Chat_capacity_media",
+        "VoiceSystem",
+        "MOTIF_Break",
+        "MOTIF_Lunch",
+        "MOTIF_Others",
+        "VoiceCall"
+      ],
+      "title": "Filter"
+    },
+    "NotificationMode": {
+      "type": "string",
+      "enum": [
+        "SChangesBasedNotification",
+        "STimeBasedNotification"
+      ],
+      "title": "NotificationMode"
+    },
+    "ColumnType": {
+      "type": "string",
+      "enum": [
+        "ctFORMULA",
+        "ctSTATSERVER"
+      ],
+      "title": "ColumnType"
+    },
+    "VT": {
+      "type": "string",
+      "enum": [
+        "vINT",
+        "vSTR",
+        "vLONG",
+        "vDBL"
+      ],
+      "title": "VT"
+    },
+    "LayoutType": {
+      "type": "string",
+      "enum": [
+        "ltPCREGULAR"
+      ],
+      "title": "LayoutType"
+    },
+    "TemplateGUID": {
+      "type": "string",
+      "enum": [
+        "000000000000-0000-0000-0000-00000003",
+        "02004c4f4f50-9e0f-11ee-13ec-1582d812",
+        "000000000000-0000-0000-0000-00000011"
+      ],
+      "title": "TemplateGUID"
+    },
+    "Username": {
+      "type": "string",
+      "enum": [
+        "default"
+      ],
+      "title": "Username"
+    },
+    "RequestedStatus": {
+      "type": "string",
+      "enum": [
+        "stACTIVE"
+      ],
+      "title": "RequestedStatus"
+    }
+  }
+}

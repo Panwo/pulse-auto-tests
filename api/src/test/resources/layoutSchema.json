@@ -1,0 +1,414 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "definition": {
+        "type": "object",
+        "properties": {
+          "layout_type": {
+            "type": "string"
+          },
+          "refresh_interval": {
+            "type": "number"
+          },
+          "enable_delta_snapshots": {
+            "type": "boolean"
+          },
+          "column": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "vt": {
+                  "type": "string"
+                },
+                "is_delta_key": {
+                  "type": "boolean"
+                },
+                "selected_value": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "collector_object": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "dbid": {
+                            "type": "number"
+                          },
+                          "tenant_dbid": {
+                            "type": "number"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "inclusion_type": {
+                            "type": "string"
+                          },
+                          "tenant_name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "dbid",
+                          "type",
+                          "name",
+                          "inclusion_type"
+                        ]
+                      }
+                    },
+                    "kvalue": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "k": {
+                            "type": "string"
+                          },
+                          "v": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "k",
+                          "v"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ]
+                },
+                "hash_id": {
+                  "type": "object",
+                  "properties": {
+                    "h0": {
+                      "type": "number"
+                    },
+                    "h1": {
+                      "type": "number"
+                    },
+                    "h2": {
+                      "type": "number"
+                    },
+                    "h3": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "h0",
+                    "h1",
+                    "h2",
+                    "h3"
+                  ]
+                },
+                "formula": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "depends_on": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "text"
+                  ]
+                },
+                "format": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "statistic": {
+                  "type": "object",
+                  "properties": {
+                    "stat_type_name": {
+                      "type": "string"
+                    },
+                    "notification_mode": {
+                      "type": "string"
+                    },
+                    "filter": {
+                      "type": "string"
+                    },
+                    "insensitivity": {
+                      "type": "number"
+                    },
+                    "adm_user_data": {
+                      "type": "boolean"
+                    },
+                    "notification_interval": {
+                      "type": "number"
+                    },
+                    "adm_software_reasons": {
+                      "type": "boolean"
+                    },
+                    "adm_hardware_reasons": {
+                      "type": "boolean"
+                    },
+                    "time_profile": {
+                      "type": "string"
+                    },
+                    "time_range": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "stat_type_name"
+                  ]
+                },
+                "show_state_icon": {
+                  "type": "boolean"
+                },
+                "available_value": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "kvalue": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "k": {
+                            "type": "string"
+                          },
+                          "v": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "k",
+                          "v"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "kvalue"
+                  ]
+                },
+                "dd_column": {
+                  "type": "object",
+                  "properties": {
+                    "group_name": {
+                      "type": "string"
+                    },
+                    "aggregate_name": {
+                      "type": "string"
+                    },
+                    "rollup_range": {
+                      "type": "string"
+                    },
+                    "calculation_type": {
+                      "type": "string"
+                    },
+                    "criteria_name": {
+                      "type": "string"
+                    },
+                    "expr": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "group_name",
+                    "aggregate_name",
+                    "rollup_range",
+                    "calculation_type",
+                    "expr"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "hash_id"
+              ]
+            }
+          },
+          "collector_def": {
+            "type": "object",
+            "properties": {
+              "allowed_object_type": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "allowed_object_type"
+            ]
+          },
+          "guid": {
+            "type": "string"
+          },
+          "template_guid": {
+            "type": "string"
+          },
+          "proxy_access_object": {
+            "type": "object",
+            "properties": {
+              "dbid": {
+                "type": "number"
+              },
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "subtype": {
+                "type": "string"
+              },
+              "folder_dbid": {
+                "type": "number"
+              },
+              "tenant_dbid": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "dbid"
+            ]
+          },
+          "dd_def": {
+            "type": "object",
+            "properties": {
+              "organization": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "organization"
+            ]
+          },
+          "allow_drill_down": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "layout_type",
+          "refresh_interval",
+          "enable_delta_snapshots",
+          "column",
+          "guid"
+        ]
+      },
+      "state": {
+        "type": "object",
+        "properties": {
+          "requested_status": {
+            "type": "string"
+          },
+          "body_hash_1": {
+            "type": "number"
+          },
+          "body_hash_2": {
+            "type": "number"
+          },
+          "uscn": {
+            "type": "number"
+          },
+          "bucket_id": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "requested_status",
+          "body_hash_1",
+          "body_hash_2",
+          "uscn",
+          "bucket_id"
+        ]
+      },
+      "record": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "number"
+          },
+          "username": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "timestamp",
+          "username"
+        ]
+      },
+      "hash_id": {
+        "type": "object",
+        "properties": {
+          "h0": {
+            "type": "number"
+          },
+          "h1": {
+            "type": "number"
+          },
+          "h2": {
+            "type": "number"
+          },
+          "h3": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "h0",
+          "h1",
+          "h2",
+          "h3"
+        ]
+      }
+    },
+    "required": [
+      "definition",
+      "state",
+      "hash_id"
+    ]
+  }
+}

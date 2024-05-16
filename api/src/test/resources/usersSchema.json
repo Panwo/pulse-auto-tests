@@ -1,0 +1,1155 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "dbid": {
+              "type": "integer"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "preferences": {
+              "type": "object",
+              "properties": {
+                "language": {
+                  "type": "string"
+                },
+                "time_zone": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "language",
+                "time_zone"
+              ]
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "dbid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "preferences",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "dbid": {
+              "type": "integer"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "dbid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "dbid": {
+              "type": "integer"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "dbid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "dbid": {
+              "type": "integer"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "dbid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "dbid": {
+              "type": "integer"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "dbid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "dbid": {
+              "type": "integer"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "dbid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "dbid": {
+              "type": "integer"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "dbid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "dbid": {
+              "type": "integer"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "dbid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "dbid": {
+              "type": "integer"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "dbid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "dbid": {
+              "type": "integer"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "dbid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "dbid": {
+              "type": "integer"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "dbid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "dbid": {
+              "type": "integer"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "dbid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "dbid": {
+              "type": "integer"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "dbid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "dbid": {
+              "type": "integer"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "dbid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "dbid": {
+              "type": "integer"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "dbid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "username": {
+              "type": "string"
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "username",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "username": {
+              "type": "string"
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "username",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "guid": {
+              "type": "string"
+            },
+            "username": {
+              "type": "string"
+            },
+            "tab_guid": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "widgets_number": {
+              "type": "integer"
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "guid",
+            "username",
+            "tab_guid",
+            "widgets_number",
+            "active"
+          ]
+        },
+        "body_hash": {
+          "type": "integer"
+        },
+        "uscn": {
+          "type": "integer"
+        },
+        "requested_status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "body",
+        "body_hash",
+        "uscn",
+        "requested_status"
+      ]
+    }
+  ]
+}

@@ -17,21 +17,29 @@ public class CustomRequestSpecification {
 
     public static final CommonConfig config = create(CommonConfig.class, getProperties());
 
-    public static RequestSpecification baseCookieAuthWithoutLogging(){
-      return given()
-              .filters(new RequestLoggingFilter(LogDetail.ALL, true, System.out),
-                      new ResponseLoggingFilter(LogDetail.ALL, true, System.out))
-              .baseUri(config.baseUrl())
-              .relaxedHTTPSValidation()
-              .header(authenthificationHeader());
+    public static RequestSpecification baseCookieAuthWithLogging() {
+      /* return new RequestSpecBuilder()
+               .addFilters(of(new RequestLoggingFilter(LogDetail.ALL, true, System.out)))
+               .setBaseUri(config.api())
+               .setRelaxedHTTPSValidation()
+               .build().header(authenthificationHeader());*/
+        return baseUriWithLogging().header(authenthificationHeader());
     }
 
-    public static Header authenthificationHeader() {
+    public static RequestSpecification baseUriWithLogging() {
+        return given()
+                .filters(new RequestLoggingFilter(LogDetail.ALL, true, System.out),
+                         new ResponseLoggingFilter(LogDetail.ALL, true, System.out))
+                .baseUri(config.api());
+    }
+
+    private static Header authenthificationHeader() {
         final var credentialsDto = UserCredentialsDto.builder()
                 .userName("default")
                 .password("password")
                 .build();
-        return new Header("Cookie", "JSESSIONID=" + getCookie(credentialsDto).getCookie("JSESSIONID"));
+        return new Header("Cookie", "JSESSIONID=" + loginAs(credentialsDto).getCookie("JSESSIONID"));
     }
+
 
 }

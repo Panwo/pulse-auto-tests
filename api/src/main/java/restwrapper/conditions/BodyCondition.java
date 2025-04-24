@@ -19,7 +19,7 @@ public class BodyCondition implements Condition  {
     @Override
     public void check(Response response) {
         if (isBlank(bodyPath)) {
-            response.then().assertThat().body(matcher);
+            response.then().body(matcher);
         } else {
             response.then().assertThat().body(bodyPath, matcher);
         }

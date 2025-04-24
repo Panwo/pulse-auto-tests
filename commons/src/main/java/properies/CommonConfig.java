@@ -12,4 +12,7 @@ public interface CommonConfig extends Config {
     @Key("${env}.baseUrl")
     String baseUrl();
 
+    @Key("${env}.api")
+    String api();
+
 }

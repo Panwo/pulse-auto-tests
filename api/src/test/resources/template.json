@@ -1,0 +1,123 @@
+{
+  "definition": {
+    "layout_type": "ltPCREGULAR",
+    "name": "Autotest",
+    "refresh_interval": 60,
+    "enable_delta_snapshots": false,
+    "column": [
+      {
+        "id": "_Object$ID",
+        "category": "ccDIMENSION",
+        "type": "ctFORMULA",
+        "vt": "vINT",
+        "is_delta_key": true,
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectID"
+          ]
+        }
+      },
+      {
+        "id": "_Object$Name",
+        "category": "ccDIMENSION",
+        "type": "ctFORMULA",
+        "vt": "vSTR",
+        "format": "string",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectName"
+          ]
+        }
+      },
+      {
+        "id": "_Object$Type",
+        "category": "ccDIMENSION",
+        "type": "ctFORMULA",
+        "vt": "vINT",
+        "is_delta_key": true,
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectType"
+          ]
+        }
+      },
+      {
+        "id": "GTL_OVERDUE_15MIN",
+        "label": "OVERDUE",
+        "type": "ctSTATSERVER",
+        "vt": "vINT",
+        "description": "GTL_OVERDUE_15MIN",
+        "format": "integer",
+        "statistic": {
+          "stat_type_name": "GTL_OVERDUE_15MIN",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 180,
+          "insensitivity": 1,
+          "time_profile": "Default",
+          "filter": "GTL_SLT_SLT1"
+        }
+      },
+      {
+        "id": "GTL_PENDING_15MIN",
+        "label": "Total Pending",
+        "type": "ctSTATSERVER",
+        "vt": "vINT",
+        "description": "GTL_PENDING_15MIN",
+        "format": "integer",
+        "statistic": {
+          "stat_type_name": "GTL_PENDING_15MIN",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 180,
+          "insensitivity": 1,
+          "time_profile": "Default",
+          "filter": "GTL_SLT_SLT1"
+        }
+      }
+    ],
+    "default_widget_body": {
+      "label": "iWD Datamart Pending vs Overdue",
+      "size_x": 1,
+      "size_y": 2,
+      "view": [
+        {
+          "type": "PagedKPIView",
+          "column_selector": [
+            "GTL_OVERDUE_15MIN"
+          ],
+          "subtype": "ObjKPIView",
+          "aggregation_function": "afSUM"
+        }
+      ],
+      "refresh_interval": 60,
+      "column_visibility": [
+        {
+          "column_id": "$",
+          "visibility": "vVISIBLE"
+        }
+      ],
+      "hide_title": false
+    },
+    "collector_def": {
+      "allowed_object_type": [
+        "SObjectQueue"
+      ]
+    },
+    "guid": "02004c4f4f50-8583-11f4-a66c-9d94c7ee",
+    "template_guid": "0050568f0c93-8d79-11e8-f92d-4961ca00",
+    "proxy_access_object": {
+      "dbid": 0
+    }
+  },
+  "state": {
+    "body_hash_1": 1590011419,
+    "body_hash_2": 1590011419,
+    "uscn": 1620
+  },
+  "record": {
+    "timestamp": 1872754578,
+    "username": "default"
+  }
+}

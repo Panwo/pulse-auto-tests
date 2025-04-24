@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "configServer": {
+      "type": "object",
+      "properties": {
+        "connected": { "type": "boolean" }
+      },
+      "required": ["connected"]
+    },
+    "database": {
+      "type": "object",
+      "properties": {
+        "connected": { "type": "boolean" }
+      },
+      "required": ["connected"]
+    },
+    "collectors": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z0-9_]+$": {
+          "type": "object",
+          "properties": {
+            "currentTimestamp": { "type": "string" },
+            "startupTimestamp": { "type": "string" },
+            "uptime": { "type": "string" },
+            "connectionStatus": {
+              "type": "object",
+              "properties": {
+                "configServer": {
+                  "type": "object",
+                  "properties": {
+                    "connected": { "type": "boolean" },
+                    "instance": { "type": "string" },
+                    "connectionTimestamp": { "type": "string" },
+                    "disconnectTimestamp": { "type": "string" }
+                  },
+                  "required": ["connected", "instance", "connectionTimestamp", "disconnectTimestamp"]
+                },
+                "statServer0": {
+                  "type": "object",
+                  "properties": {
+                    "present": { "type": "boolean" },
+                    "connected": { "type": "boolean" },
+                    "connectionTimestamp": { "type": "string" },
+                    "disconnectTimestamp": { "type": "string" },
+                    "totalStatisticCount": { "type": "string" },
+                    "openedStatisticCount": { "type": "string" },
+                    "failedStatisticCount": { "type": "string" },
+                    "dataEventCount": { "type": "string" }
+                  },
+                  "required": [
+                    "present",
+                    "connected",
+                    "connectionTimestamp",
+                    "disconnectTimestamp",
+                    "totalStatisticCount",
+                    "openedStatisticCount",
+                    "failedStatisticCount",
+                    "dataEventCount"
+                  ]
+                },
+                "statServer1": {
+                  "type": "object",
+                  "properties": {
+                    "present": { "type": "boolean" },
+                    "connected": { "type": "boolean" },
+                    "connectionTimestamp": { "type": "string" },
+                    "disconnectTimestamp": { "type": "string" },
+                    "totalStatisticCount": { "type": "string" },
+                    "openedStatisticCount": { "type": "string" },
+                    "failedStatisticCount": { "type": "string" },
+                    "dataEventCount": { "type": "string" }
+                  },
+                  "required": [
+                    "present",
+                    "connected",
+                    "connectionTimestamp",
+                    "disconnectTimestamp",
+                    "totalStatisticCount",
+                    "openedStatisticCount",
+                    "failedStatisticCount",
+                    "dataEventCount"
+                  ]
+                },
+                "dbServerConnection": { "type": "string" },
+                "dbConnection1": {
+                  "type": "object",
+                  "properties": {
+                    "connected": { "type": "boolean" },
+                    "connectionTimestamp": { "type": "string" },
+                    "disconnectTimestamp": { "type": "string" }
+                  },
+                  "required": ["connected", "connectionTimestamp", "disconnectTimestamp"]
+                },
+                "dbConnection2": {
+                  "type": "object",
+                  "properties": {
+                    "connected": { "type": "boolean" },
+                    "connectionTimestamp": { "type": "string" },
+                    "disconnectTimestamp": { "type": "string" }
+                  },
+                  "required": ["connected", "connectionTimestamp", "disconnectTimestamp"]
+                }
+              },
+              "required": [
+                "configServer",
+                "statServer0",
+                "dbServerConnection",
+                "dbConnection1",
+                "dbConnection2"
+              ]
+            },
+            "snapshotWritingStatus": { "type": "boolean" },
+            "pendingLayoutStatusChangesCount": { "type": "string" },
+            "maxStatisticValueDelay": { "type": "integer" },
+            "activeLayoutCount": { "type": "string" },
+            "deactivatedDanglingLayoutCount": { "type": "string" },
+            "version": { "type": "string" }
+          },
+          "required": [
+            "currentTimestamp",
+            "startupTimestamp",
+            "uptime",
+            "connectionStatus",
+            "snapshotWritingStatus",
+            "pendingLayoutStatusChangesCount",
+            "maxStatisticValueDelay",
+            "activeLayoutCount",
+            "deactivatedDanglingLayoutCount",
+            "version"
+          ]
+        }
+      }
+    },
+    "timestamp": { "type": "integer" }
+  },
+  "required": ["configServer", "database", "collectors", "timestamp"]
+}

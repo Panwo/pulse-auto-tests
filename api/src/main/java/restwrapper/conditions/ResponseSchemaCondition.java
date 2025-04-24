@@ -13,6 +13,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 public class ResponseSchemaCondition implements Condition{
 
     private final InputStream file;
+
     @Override
     @SneakyThrows
     public void check(Response response) {

@@ -3,8 +3,6 @@ package restwrapper.conditions;
 import lombok.experimental.UtilityClass;
 import org.hamcrest.Matcher;
 
-import java.io.InputStream;
-
 @UtilityClass
 public class Conditions {
 
@@ -20,8 +18,13 @@ public class Conditions {
         return new BodyCondition(matcher);
     }
 
-    public static ResponseSchemaCondition responseSchema(InputStream file) {
-        return new ResponseSchemaCondition(file);
+    public static ResponseSchemaCondition responseSchema(String schemaUrl) {
+        return new ResponseSchemaCondition(BodyCondition.class
+                .getResourceAsStream("/" + schemaUrl));
+    }
+
+    public static ContentTypeCondition contentType(String contentType) {
+        return new ContentTypeCondition(contentType);
     }
 
 }

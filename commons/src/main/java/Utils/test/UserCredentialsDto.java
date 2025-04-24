@@ -13,7 +13,6 @@ import org.aeonbits.owner.Config;
 public class UserCredentialsDto {
 
     private String userName;
-
     private String password;
 
 }

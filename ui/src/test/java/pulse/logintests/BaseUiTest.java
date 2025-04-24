@@ -1,14 +1,14 @@
 package pulse.logintests;
 
-import com.codeborne.selenide.Selenide;
 import groovy.util.logging.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
-import static com.codeborne.selenide.Selenide.open;
-import static java.lang.System.getProperties;
-import static org.aeonbits.owner.ConfigFactory.create;
 import properies.CommonConfig;
 
 import java.util.TreeMap;
+
+import static com.codeborne.selenide.Selenide.open;
+import static java.lang.System.getProperties;
+import static org.aeonbits.owner.ConfigFactory.create;
 
 @Slf4j
 public class BaseUiTest {
@@ -17,7 +17,7 @@ public class BaseUiTest {
 
 
     @BeforeAll
-    public static void setUp(){
+    public static void setUp() {
 
         TreeMap<String, String> map = new TreeMap<>();
 

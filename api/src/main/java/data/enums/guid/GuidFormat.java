@@ -1,6 +1,5 @@
 package data.enums.guid;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

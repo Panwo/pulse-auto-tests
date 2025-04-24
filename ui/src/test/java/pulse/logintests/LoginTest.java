@@ -1,26 +1,20 @@
 package pulse.logintests;
 
-import com.codeborne.selenide.CollectionCondition;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 
-import java.time.Duration;
-import java.util.List;
-import java.util.TreeMap;
-
-import static com.codeborne.selenide.CollectionCondition.*;
-import static com.codeborne.selenide.Selenide.*;
-import static java.time.Duration.*;
-import static org.openqa.selenium.By.*;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.Selenide.$$x;
+import static com.codeborne.selenide.Selenide.$x;
+import static java.time.Duration.ofSeconds;
 
 
-class LoginTest extends BaseUiTest{
+class LoginTest extends BaseUiTest {
 
     private final String LOGIN = "paramonov.vdp@gmail.com";
     private final String PASSWORD = "";
 
     @Test
-    void register(){
+    void register() {
 
         $x("//input[contains(@class,'ark-login-username')]").sendKeys("default");
         $x("//input[contains(@class, 'ark-login-password')]").sendKeys("password");

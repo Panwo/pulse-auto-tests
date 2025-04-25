@@ -2,4 +2,6 @@ rootProject.name = 'Pulse_grv'
 include 'api'
 include 'commons'
 include 'ui'
+include 'ui:main'
+findProject(':ui:main')?.name = 'main'
 

@@ -34,12 +34,14 @@ public class CustomRequestSpecification {
     }
 
     private static Header authenthificationHeader() {
-        final var credentialsDto = UserCredentialsDto.builder()
+        var credentials = UserCredentialsDto.builder()
                 .userName("default")
                 .password("password")
                 .build();
-        return new Header("Cookie", "JSESSIONID=" + loginAs(credentialsDto).getCookie("JSESSIONID"));
-    }
 
+        var cookies = loginAs(credentials).getCookie("JSESSIONID");
+
+        return new Header("Cookie", "JSESSIONID=" + cookies);
+    }
 
 }

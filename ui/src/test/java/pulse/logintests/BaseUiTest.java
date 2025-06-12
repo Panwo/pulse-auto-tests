@@ -1,10 +1,11 @@
 package pulse.logintests;
 
+
+import com.codeborne.selenide.WebDriverRunner;
 import groovy.util.logging.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import properies.CommonConfig;
-
-import java.util.TreeMap;
+import org.openqa.selenium.Cookie;
 
 import static com.codeborne.selenide.Selenide.open;
 import static java.lang.System.getProperties;
@@ -15,22 +16,11 @@ public class BaseUiTest {
 
     public static final CommonConfig config = create(CommonConfig.class, getProperties());
 
-
     @BeforeAll
     public static void setUp() {
-
-        TreeMap<String, String> map = new TreeMap<>();
-
-        map.put("300px", "a");
-        map.put("200px", "e");
-        map.put("100px", "u");
-        map.put("500px", "r");
-        map.put("600px", "q");
-
-
-        map.keySet().stream().forEach(System.out::println);
+       /* Cookie ck = new Cookie("JSESSIONID", "en");
+        WebDriverRunner.getWebDriver().manage().addCookie(ck);*/
         open(config.baseUrl());
-
     }
 
 }

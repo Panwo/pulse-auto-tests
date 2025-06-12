@@ -2,17 +2,13 @@ buildscript {
     repositories {
         mavenCentral()
     }
+
     dependencies {
         classpath 'org.owasp:dependency-check-gradle:6.2.2'
     }
 }
 
-subprojects {
-    apply plugin: 'org.owasp.dependencycheck'
-}
-
 allprojects {
-
     apply plugin: 'org.owasp.dependencycheck'
     apply plugin: 'java'
 
@@ -27,42 +23,21 @@ allprojects {
         mavenCentral()
     }
 
-
     ext {
         jupiter = '5.9.0'
-        slf4j = '2.0.5'
         lombok = '1.18.30'
         aeonbits = '1.0.12'
-        commonsio = '2.11.0'
         selenide = '6.19.1'
         assertjCore = '3.24.1'
-        awaitility = '4.2.0'
-        jdbi = '3.35.0'
-        mssqlJdbc = '11.2.2.jre11'
-        postgresql = '42.5.1'
-        mssqlAuth = '11.2.2.x86'
-        msal4j = '1.11.0'
         testcontainers = '1.20.4'
-        azureStorage = '8.6.6'
         restassured = '4.4.0'
         jaxbapi = '2.3.1'
-        azureIdentity = '1.7.0'
-        skyscreamer = '1.5.1'
         jsonValidator = '5.4.0'
     }
 
     dependencies {
-        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
         implementation "com.codeborne:selenide:$selenide"
         implementation "org.testcontainers:selenium:$testcontainers"
-        implementation 'com.theokanning.openai-gpt3-java:client:0.8.1'
-        implementation 'com.theokanning.openai-gpt3-java:api:0.8.1'
-        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-        compileOnly 'org.projectlombok:lombok:1.18.26'
-        annotationProcessor 'org.projectlombok:lombok:1.18.26'
-
         implementation "org.aeonbits.owner:owner:$aeonbits"
         implementation "org.testcontainers:junit-jupiter:$testcontainers"
         implementation "org.testcontainers:testcontainers:$testcontainers"
@@ -79,17 +54,9 @@ allprojects {
 
         compileOnly "org.projectlombok:lombok:$lombok"
         annotationProcessor "org.projectlombok:lombok:$lombok"
-        testCompileOnly "org.projectlombok:lombok:$lombok"
-        testAnnotationProcessor "org.projectlombok:lombok:$lombok"
-        testCompileOnly 'org.projectlombok:lombok:1.18.26'
-        testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
     }
 
     tasks.withType(Test).configureEach {
-        doFirst {
-            deleteDaemonLogs
-        }
-
         systemProperties = System.properties as Map<String, ?>
         systemProperty "file.encoding", "utf-8"
         useJUnitPlatform()
@@ -101,7 +68,7 @@ allprojects {
         }
     }
 
-    tasks.withType(JavaCompile) {
+    tasks.withType(JavaCompile).configureEach {
         options.encoding = 'UTF-8'
     }
 

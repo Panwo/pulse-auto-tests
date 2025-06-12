@@ -1,26 +1,27 @@
 package pulse.logintests;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
-import static java.time.Duration.ofSeconds;
+import pages.LoginPage;
+import pages.NavigationBar;
 
 
+import static com.codeborne.selenide.Condition.partialText;
+import static com.codeborne.selenide.Condition.text;
+import static pages.NavigationBar.PULSE_BRAND_TEXT;
+
+
+@Slf4j
 class LoginTest extends BaseUiTest {
 
-    private final String LOGIN = "paramonov.vdp@gmail.com";
-    private final String PASSWORD = "";
+    private final LoginPage loginPage = new LoginPage();
+    private final NavigationBar navigationBar = new NavigationBar();
 
     @Test
-    void register() {
-
-        $x("//input[contains(@class,'ark-login-username')]").sendKeys("default");
-        $x("//input[contains(@class, 'ark-login-password')]").sendKeys("password");
-        $x("//button[contains(@class, 'btn-primary')]").click();
-        $$x("//li[@gridster-item='widget']").shouldHave(sizeGreaterThan(0), ofSeconds(20));
-
+    void shouldBeAbleToLogin() {
+        loginPage.loginAsDefault();
+        navigationBar.navigationBarUserDropdown().shouldHave(partialText("default default"));
+        navigationBar.navigationBarBrand().shouldHave(text(PULSE_BRAND_TEXT));
     }
 
 }

@@ -3,6 +3,7 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
+import static java.lang.System.*;
 
 public class LoginPage {
 
@@ -24,6 +25,12 @@ public class LoginPage {
 
     public void fillPassword(String password){
         passwordField().sendKeys(password);
+    }
+
+    public void loginAsDefault (){
+        fillUsername(getenv("PulseUser"));
+        fillPassword(getenv("PulsePassword"));
+        logInButton().click();
     }
 
 }

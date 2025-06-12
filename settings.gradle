@@ -4,4 +4,3 @@ include 'commons'
 include 'ui'
 include 'ui:main'
 findProject(':ui:main')?.name = 'main'
-

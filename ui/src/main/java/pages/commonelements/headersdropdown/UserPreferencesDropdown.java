@@ -1,11 +1,11 @@
-package pages;
+package pages.commonelements.headersdropdown;
 
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-public class UserDropdownMenu {
+public class UserPreferencesDropdown {
 
     private SelenideElement dropdownContainer(){
         return $("ul[class*='dropdown-menu-right show']");

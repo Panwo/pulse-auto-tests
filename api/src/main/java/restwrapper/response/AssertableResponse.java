@@ -3,6 +3,7 @@ package restwrapper.response;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
+import lombok.Getter;
 import lombok.SneakyThrows;
 import restwrapper.conditions.Condition;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
+@Getter
 public class AssertableResponse {
 
     private final Response response;

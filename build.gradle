@@ -27,24 +27,17 @@ allprojects {
         jupiter = '5.9.0'
         lombok = '1.18.30'
         aeonbits = '1.0.12'
-        selenide = '6.19.1'
         assertjCore = '3.24.1'
         testcontainers = '1.20.4'
-        restassured = '4.4.0'
-        jaxbapi = '2.3.1'
-        jsonValidator = '5.4.0'
     }
 
     dependencies {
-        implementation "com.codeborne:selenide:$selenide"
         implementation "org.testcontainers:selenium:$testcontainers"
         implementation "org.aeonbits.owner:owner:$aeonbits"
         implementation "org.testcontainers:junit-jupiter:$testcontainers"
         implementation "org.testcontainers:testcontainers:$testcontainers"
         implementation "org.junit.jupiter:junit-jupiter:$jupiter"
-        implementation "io.rest-assured:rest-assured:$restassured"
-        implementation "javax.xml.bind:jaxb-api:$jaxbapi"
-        implementation "io.rest-assured:json-schema-validator:$jsonValidator"
+
 
         testImplementation "org.assertj:assertj-core:$assertjCore"
         testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiter"
@@ -70,6 +63,10 @@ allprojects {
 
     tasks.withType(JavaCompile).configureEach {
         options.encoding = 'UTF-8'
+    }
+
+    tasks.withType(Test) {
+        systemProperty 'java.library.path', ''
     }
 
     task deleteDaemonLogs {

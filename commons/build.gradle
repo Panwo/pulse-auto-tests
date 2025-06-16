@@ -9,9 +9,16 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    restassured = '4.4.0'
+    jsonValidator = '5.4.0'
+    jaxbapi = '2.3.1'
+    databind = '2.19.0'
+}
+
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation("com.fasterxml.jackson.core:jackson-databind:$databind")
+    implementation "io.rest-assured:rest-assured:$restassured"
 }
 
 test {

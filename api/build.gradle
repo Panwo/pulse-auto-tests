@@ -9,10 +9,17 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    restassured = '4.4.0'
+    jsonValidator = '5.4.0'
+    jaxbapi = '2.3.1'
+}
+
 dependencies {
-    implementation project(path: ':commons')
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation project(':commons')
+    implementation "io.rest-assured:rest-assured:$restassured"
+    implementation "io.rest-assured:json-schema-validator:$jsonValidator"
+    implementation "javax.xml.bind:jaxb-api:$jaxbapi"
 }
 
 test {

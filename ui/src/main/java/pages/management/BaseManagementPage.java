@@ -25,11 +25,20 @@ public abstract class BaseManagementPage {
     }
 
     protected SelenideElement gridContainer() {
-        return $$("div[class*='ag-root ag-unselectable']").filter(visible).first();
+        return $$("div[class*='ag-root ag-unselectable']").find(visible);
     }
 
     protected SelenideElement detailsContainer() {
-        return $$(".pulse-manage-entity-list-details").filter(visible).first();
+        return $$(".pulse-manage-entity-list-details").find(visible);
+    }
+
+    public SelenideElement deleteButton() {
+        return $$("").find(visible);
+
+    }
+
+    public SelenideElement refreshButton() {
+        return $$("button[title='Refresh']").find(visible);
     }
 
 }

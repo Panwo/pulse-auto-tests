@@ -1,7 +1,25 @@
-# Project exclude paths
-/.gradle/
-/api/build/
-/api/build/classes/java/main/
-/api/build/classes/java/test/
-/commons/build/
-/commons/build/classes/java/main/
+*.class
+# Log file
+*.log
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+build/
+.idea/
+.gradle/
+out/
+*.ipr
+*.iml
+api/build
+api/target
+api/out
+ui/build
+ui/out
+ui/target
+mobile/target
+mobile/out
+mobile/build

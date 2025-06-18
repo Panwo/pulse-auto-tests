@@ -6,10 +6,18 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public abstract class BaseManagementPage {
+public abstract class AbstractManagementPage {
 
     private SelenideElement searchContainer() {
         return $(".filter-container");
+    }
+
+    protected SelenideElement toolbarContainer() {
+        return $$(".grid-toolbar-main").find(visible);
+    }
+
+    protected SelenideElement entityManagementContainer(){
+        return $$(".pulse-manage-entity-list-details").find(visible);
     }
 
     protected SelenideElement searchField() {
@@ -33,12 +41,18 @@ public abstract class BaseManagementPage {
     }
 
     public SelenideElement deleteButton() {
-        return $$("").find(visible);
-
+        return toolbarContainer().$("button[title*='Delete']");
     }
 
     public SelenideElement refreshButton() {
-        return $$("button[title='Refresh']").find(visible);
+        return toolbarContainer().$("button[title='Refresh']");
+    }
+    public SelenideElement exportButton(){
+       return toolbarContainer().$("button[title*='Export']");
+    }
+
+    public SelenideElement deleteEntityButton(){
+        return entityManagementContainer().$("button[title*='Delete']");
     }
 
 }

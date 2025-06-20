@@ -1,9 +1,7 @@
 package tabs;
 
-import services.CommonRestRequests;
+import services.RestClient;
 
 class TabsApiTests {
-    private final CommonRestRequests commonRestRequests = new CommonRestRequests();
-
 
 }

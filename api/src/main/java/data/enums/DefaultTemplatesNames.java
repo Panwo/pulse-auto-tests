@@ -1,4 +1,4 @@
-package data.enums.endpoints;
+package data.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

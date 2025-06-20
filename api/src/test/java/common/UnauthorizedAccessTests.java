@@ -1,64 +1,62 @@
 package common;
 
 import org.junit.jupiter.api.Test;
-import services.CommonRestRequests;
 
-import static data.enums.endpoints.LayoutsApi.LAYOUTS;
 import static data.enums.endpoints.HealthChecksApi.HEALTH_CHECK;
 import static data.enums.endpoints.HealthChecksApi.HEALTH_CHECK_DETAILS;
-import static data.enums.jsonschemas.Schemas.*;
+import static data.enums.endpoints.LayoutsApi.LAYOUTS;
 import static data.enums.endpoints.TabsApi.TABS;
 import static data.enums.endpoints.TemplatesApi.TEMPLATES;
 import static data.enums.endpoints.UsersApi.USERS;
 import static data.enums.endpoints.WidgetsApi.WIDGETS;
+import static data.enums.jsonschemas.Schemas.HEALTH_RESPONSE_SCHEMA;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 import static restwrapper.conditions.Conditions.responseSchema;
 import static restwrapper.conditions.Conditions.statusCode;
+import static services.RestClient.getWithoutAuth;
 
-public class UnauthorizedTests {
-
-    private final CommonRestRequests commonRestRequests = new CommonRestRequests();
+class UnauthorizedAccessTests {
 
     @Test
     void shouldReturnUnauthorizedWhenAccessingTemplatesWithoutAuth() {
-        commonRestRequests.getWithoutAuth(TEMPLATES.getPath())
+        getWithoutAuth(TEMPLATES.getPath())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 
     @Test
     void shouldReturnUnauthorizedWhenAccessingLayoutsWithoutAuth() {
-        commonRestRequests.getWithoutAuth(LAYOUTS.getPath())
+        getWithoutAuth(LAYOUTS.getPath())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 
     @Test
     void shouldReturnUnauthorizedWhenAccessingWidgetsWithoutAuth() {
-        commonRestRequests.getWithoutAuth(WIDGETS.getPath())
+        getWithoutAuth(WIDGETS.getPath())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 
     @Test
     void shouldReturnUnauthorizedWhenAccessingTabsWithoutAuth() {
-        commonRestRequests.getWithoutAuth(TABS.getPath())
+        getWithoutAuth(TABS.getPath())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 
     @Test
     void shouldReturnUnauthorizedWhenAccessingUsersWithoutAuth() {
-        commonRestRequests.getWithoutAuth(USERS.getPath())
+        getWithoutAuth(USERS.getPath())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 
     @Test
     void shouldReturnResponseWhenAccessingHealthWithoutAuth() {
-        commonRestRequests.getWithoutAuth(HEALTH_CHECK.getPath())
+        getWithoutAuth(HEALTH_CHECK.getPath())
                 .shouldHave(statusCode(SC_OK));
     }
 
     @Test
     void shouldReturnResponseWhenAccessingHealthDetailsWithoutAuth() {
-        commonRestRequests.getWithoutAuth(HEALTH_CHECK_DETAILS.getPath())
+        getWithoutAuth(HEALTH_CHECK_DETAILS.getPath())
                 .shouldHave(responseSchema(HEALTH_RESPONSE_SCHEMA.getPath()));
     }
 

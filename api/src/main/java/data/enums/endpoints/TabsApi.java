@@ -17,5 +17,5 @@ public enum TabsApi {
     TAB_GUID_BRIEF("/wbrt/tabs/%s?brief=%"),
     TAB_GUID_PUT_WITH_PARAMETERS("/wbrt/tabs/%s?brief=%&overwrite=%");
 
-    private final String path;
+    private final String endpoint;
 }

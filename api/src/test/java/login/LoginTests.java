@@ -4,15 +4,17 @@ import Utils.UserCredentialsDto;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import static Utils.CredentialUtils.loginAs;
+import static Utils.AuthClient.loginAs;
 import static Utils.Users.getDefaultUser;
 import static com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.HttpStatus.SC_NO_CONTENT;
 import static com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.HttpStatus.SC_UNAUTHORIZED;
+import static java.lang.System.*;
 
-@Tag("smokeApi")
+@Tag("apiLogin")
 class LoginTests {
 
     @Test
+    @Tag("smokeApi")
     void shouldBeAbleToLogin() {
         loginAs(getDefaultUser()).then().statusCode(SC_NO_CONTENT);
     }
@@ -20,7 +22,7 @@ class LoginTests {
     @Test
     void shouldFailToLoginWithInvalidCredentials() {
         var defaultUserWithoutPassword = UserCredentialsDto.builder()
-                .userName(System.getenv("PulseUser"))
+                .userName(getenv("PulseUser"))
                 .password("")
                 .build();
 

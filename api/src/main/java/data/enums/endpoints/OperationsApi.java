@@ -10,6 +10,6 @@ public enum OperationsApi {
     IMPORT("/api/wbrt/import"),
     EXPORT("/api/wbrt/export");
 
-    private final String path;
+    private final String endpoint;
 
 }

@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 public enum Schemas {
 
     WIDGET_RESPONSE_SCHEMA("widgetSchema.json"),
-    TEMPLATE("src/test/resources/template.json"),
+    TEMPLATE_RESPONSE_SCHEMA("templateSchema.json"),
     USER_RESPONSE_SCHEMA("usersSchema.json"),
     LAYOUT_RESPONSE_SCHEMA("layoutSchema.json"),
     TAB_RESPONSE_SCHEMA("tabsSchema.json"),

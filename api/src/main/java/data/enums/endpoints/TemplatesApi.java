@@ -13,6 +13,6 @@ public enum TemplatesApi {
     TEMPLATES_GUID("/wbrt/templates/%s"),
     TEMPLATES_USCN_TYPE("/wbrt/templates?uscn=%s&type=%s");
 
-    private final String path;
+    private final String endpoint;
 
 }

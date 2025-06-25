@@ -1,4 +1,4 @@
-package common;
+package security;
 
 import org.junit.jupiter.api.Test;
 
@@ -20,43 +20,43 @@ class UnauthorizedAccessTests {
 
     @Test
     void shouldReturnUnauthorizedWhenAccessingTemplatesWithoutAuth() {
-        getWithoutAuth(TEMPLATES.getPath())
+        getWithoutAuth(TEMPLATES.getEndpoint())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 
     @Test
     void shouldReturnUnauthorizedWhenAccessingLayoutsWithoutAuth() {
-        getWithoutAuth(LAYOUTS.getPath())
+        getWithoutAuth(LAYOUTS.getEndpoint())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 
     @Test
     void shouldReturnUnauthorizedWhenAccessingWidgetsWithoutAuth() {
-        getWithoutAuth(WIDGETS.getPath())
+        getWithoutAuth(WIDGETS.getEndpoint())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 
     @Test
     void shouldReturnUnauthorizedWhenAccessingTabsWithoutAuth() {
-        getWithoutAuth(TABS.getPath())
+        getWithoutAuth(TABS.getEndpoint())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 
     @Test
     void shouldReturnUnauthorizedWhenAccessingUsersWithoutAuth() {
-        getWithoutAuth(USERS.getPath())
+        getWithoutAuth(USERS.getEndpoint())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 
     @Test
     void shouldReturnResponseWhenAccessingHealthWithoutAuth() {
-        getWithoutAuth(HEALTH_CHECK.getPath())
+        getWithoutAuth(HEALTH_CHECK.getEndpoint())
                 .shouldHave(statusCode(SC_OK));
     }
 
     @Test
     void shouldReturnResponseWhenAccessingHealthDetailsWithoutAuth() {
-        getWithoutAuth(HEALTH_CHECK_DETAILS.getPath())
+        getWithoutAuth(HEALTH_CHECK_DETAILS.getEndpoint())
                 .shouldHave(responseSchema(HEALTH_RESPONSE_SCHEMA.getPath()));
     }
 

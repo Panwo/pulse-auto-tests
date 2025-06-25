@@ -1,7 +1,7 @@
 package templates;
 
 import data.enums.DefaultTemplatesNames;
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -10,44 +10,52 @@ import services.models.template.TemplateResponse;
 
 import java.util.stream.Stream;
 
-import static com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.HttpStatus.*;
+import static com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.HttpStatus.SC_BAD_REQUEST;
 import static data.enums.endpoints.TemplatesApi.*;
-import static data.enums.jsonschemas.Schemas.TEMPLATE;
+import static data.enums.jsonschemas.Schemas.TEMPLATE_RESPONSE_SCHEMA;
 import static java.lang.String.format;
 import static java.util.Arrays.stream;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.params.provider.Arguments.of;
-import static restwrapper.conditions.Conditions.body;
-import static restwrapper.conditions.Conditions.statusCode;
-import static services.RestClient.*;
+import static restwrapper.conditions.Conditions.*;
+import static services.RestClient.getRequest;
+import static services.RestClient.getRequestOk;
 
-class TemplatesTests {
+@Tag("apiTemplates")
+@Tag("apiRegression")
+class ReadTemplatesTests {
 
     private static final String EXISTING_TEMPLATE_GUID = "000000000000-0000-0000-0000-00000008";
     private static final int FILTER_USCN = 1430;
-    private static final String AUTOTEST_NAME = "Autotest";
 
     @Test
-    void shouldCheckDefaultTemplatesPresence() {
+    @Tag("smokeApi")
+    void shouldGetTemplates() {
+        getRequestOk(TEMPLATES.getEndpoint())
+                .shouldHave(responseSchema(TEMPLATE_RESPONSE_SCHEMA.getPath()));
+    }
+
+    @Test
+    void shouldHaveDefaultTemplates() {
         var defaultTemplates = stream(DefaultTemplatesNames.values())
                 .map(DefaultTemplatesNames::getType).toArray(String[]::new);
 
-        getRequestOk(TEMPLATES.getPath())
+        getRequestOk(TEMPLATES.getEndpoint())
                 .shouldHave(body("definition.name", hasItems(defaultTemplates)));
     }
 
     @Test
     void shouldGetTemplateByGuid() {
-        getRequest(format(TEMPLATES_GUID.getPath(), EXISTING_TEMPLATE_GUID))
+        getRequest(format(TEMPLATES_GUID.getEndpoint(), EXISTING_TEMPLATE_GUID))
                 .shouldHave(body("definition.guid", is(EXISTING_TEMPLATE_GUID)));
     }
 
     @ParameterizedTest
     @MethodSource("typesWithExpectations")
-    void shouldReturnTemplatesMatchingType(String templateType) {
-        var templates = getRequestOk(format(TEMPLATES_TYPE.getPath(), templateType))
+    void shouldGetTemplateByType(String templateType) {
+        var templates = getRequestOk(format(TEMPLATES_TYPE.getEndpoint(), templateType))
                 .getResponseAsList(TemplateResponse[].class);
 
         assertTrue(templates.isEmpty() || templates.stream()
@@ -56,32 +64,16 @@ class TemplatesTests {
 
     @Test
     void shouldReturnBadRequestForUnknownTemplateType() {
-        getRequest(format(format(TEMPLATES_TYPE.getPath(), "ltREGULAR")))
+        getRequest(format(format(TEMPLATES_TYPE.getEndpoint(), "ltREGULAR")))
                 .shouldHave(statusCode(SC_BAD_REQUEST));
     }
 
     @Test
-    void shouldFilterByUscn() {
-        var templates = getRequestOk(format(TEMPLATES_USCN.getPath(), FILTER_USCN))
+    void shouldFilterTemplatesByUscn() {
+        var templates = getRequestOk(format(TEMPLATES_USCN.getEndpoint(), FILTER_USCN))
                 .getResponseAsList(TemplateResponse[].class);
 
         assertTrue(templates.stream().allMatch(template -> template.getState().getUscn() > FILTER_USCN));
-    }
-
-    @Test
-    void shouldCreateTemplate() {
-        postRequest(TEMPLATES.getPath(), TEMPLATE.getPath())
-                .shouldHave(statusCode(SC_CREATED));
-    }
-
-    @AfterAll
-    static void deleteTemplate() {
-        var CREATED_TEMPLATE_GUID = getRequestOk(TEMPLATES.getPath())
-                .getResponseAsList(TemplateResponse[].class).stream()
-                .filter(template -> template.getDefinition().getName().equals(AUTOTEST_NAME))
-                .findFirst().get().getDefinition().getGuid();
-        deleteRequest(format(TEMPLATES_GUID.getPath(), CREATED_TEMPLATE_GUID))
-                .shouldHave(statusCode(SC_OK));
     }
 
     static Stream<Arguments> typesWithExpectations() {

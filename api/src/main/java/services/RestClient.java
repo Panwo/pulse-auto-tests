@@ -9,6 +9,7 @@ import static com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.Http
 import static restwrapper.commons.CustomRequestSpecification.baseRequest;
 import static restwrapper.commons.CustomRequestSpecification.baseUrlWithLogging;
 import static restwrapper.conditions.Conditions.statusCode;
+import static files.FilesManager.deserialize;
 @UtilityClass
 public class RestClient {
 
@@ -39,7 +40,7 @@ public class RestClient {
 
     public AssertableResponse postRequest(String path, UserCredentialsDto user, String jsonFile) {
         return new AssertableResponse(baseRequest(user)
-                .body(jsonFile)
+                .body(deserialize(jsonFile))
                 .post(path));
     }
 

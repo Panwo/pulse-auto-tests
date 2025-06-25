@@ -10,6 +10,6 @@ public enum HealthChecksApi {
     HEALTH_CHECK("/plugins/wbrt/health"),
     HEALTH_CHECK_DETAILS("/plugins/wbrt/health/detail");
 
-    private final String path;
+    private final String endpoint;
 
 }

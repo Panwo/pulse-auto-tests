@@ -15,6 +15,6 @@ public enum LayoutsApi {
     LAYOUT_USCN("/wbrt/layouts?uscn=%s"),
     LAYOUT_USCN_TYPE("/wbrt/layouts?uscn=%s&type=%s");
 
-    private final String path;
+    private final String endpoint;
 
 }

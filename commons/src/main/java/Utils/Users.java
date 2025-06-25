@@ -2,13 +2,15 @@ package Utils;
 
 import lombok.experimental.UtilityClass;
 
+import static Utils.AuthClient.*;
+
 @UtilityClass
 public class Users {
 
     public static UserCredentialsDto getDefaultUser() {
         return UserCredentialsDto.builder()
-                .userName(System.getenv("PulseUser"))
-                .password(System.getenv("PulsePassword"))
+                .userName(requireEnv("PulseUser"))
+                .password(requireEnv("PulsePassword"))
                 .build();
     }
 

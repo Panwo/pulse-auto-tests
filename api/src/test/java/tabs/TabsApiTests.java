@@ -1,7 +1,8 @@
 package tabs;
 
-import services.RestClient;
+import org.junit.jupiter.api.Tag;
 
+@Tag("apiTabs")
 class TabsApiTests {
 
 }

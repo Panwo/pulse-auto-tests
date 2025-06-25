@@ -11,6 +11,6 @@ public enum UsersApi {
     USERS_GUID("/wbrt/users/%s"),
     USERS_GUID_BRIEF_DISABLED("/wbrt/users/%s?brief=false");
 
-    private final String path;
+    private final String endpoint;
 
 }

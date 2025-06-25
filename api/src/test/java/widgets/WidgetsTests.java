@@ -10,13 +10,14 @@ import static restwrapper.conditions.Conditions.contentType;
 import static restwrapper.conditions.Conditions.responseSchema;
 import static services.RestClient.getRequestOk;
 
+@Tag("apiWidgets")
 class WidgetsTests {
 
     @Test
     @Tag("smoke")
     @Label("some dbid`s are missing")
     void shouldGetUsersList() {
-        getRequestOk(WIDGETS.getPath())
+        getRequestOk(WIDGETS.getEndpoint())
                 .shouldHave(contentType("application/json"))
                 .shouldHave(responseSchema(WIDGET_RESPONSE_SCHEMA.getPath()));
     }

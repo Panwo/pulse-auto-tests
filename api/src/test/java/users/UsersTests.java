@@ -15,6 +15,7 @@ import static org.junit.Assert.*;
 import static restwrapper.conditions.Conditions.*;
 import static services.RestClient.*;
 
+@Tag("apiUsers")
 class UsersTests {
 
     private final String FAKE_USER_ID = "02004c4f4f50-8c74-11f4-ab2e-460fbe4d";
@@ -24,26 +25,26 @@ class UsersTests {
     @Tag("smoke")
     @Label("some dbid`s are missing")
     void shouldGetUsersList() {
-        getRequestOk(USERS.getPath())
+        getRequestOk(USERS.getEndpoint())
                 .shouldHave(contentType("application/json"))
                 .shouldHave(responseSchema(USER_RESPONSE_SCHEMA.getPath()));
     }
 
     @Test
     void shouldReturnMethodNotAllowed() {
-        postRequest(USERS.getPath())
+        postRequest(USERS.getEndpoint())
                 .shouldHave(statusCode(SC_METHOD_NOT_ALLOWED));
     }
 
     @Test
     void shouldReturnUserNotFound() {
-        getRequest(format(USERS_GUID.getPath(), FAKE_USER_ID))
+        getRequest(format(USERS_GUID.getEndpoint(), FAKE_USER_ID))
                 .shouldHave(statusCode(SC_NOT_FOUND));
     }
 
     @Test
     void shouldReturnUserById() {
-        var user = getRequestOk(format(USERS_GUID.getPath(), EXISTING_USER_ID))
+        var user = getRequestOk(format(USERS_GUID.getEndpoint(), EXISTING_USER_ID))
                 .getResponseAsPojo(UsersResponse.class);
 
         assertEquals(EXISTING_USER_ID, user.getBody().getGuid());
@@ -51,7 +52,7 @@ class UsersTests {
 
     @Test
     void shouldReturnTabsInfo() {
-        var tabs = getRequestOk(format(USERS_GUID_BRIEF_DISABLED.getPath(), EXISTING_USER_ID))
+        var tabs = getRequestOk(format(USERS_GUID_BRIEF_DISABLED.getEndpoint(), EXISTING_USER_ID))
                 .getResponseAsPojo(UsersResponse.class).getBody().getTab();
 
         assertFalse(tabs.isEmpty());

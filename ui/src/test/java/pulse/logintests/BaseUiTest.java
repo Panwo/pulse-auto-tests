@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import pages.commonelements.headers.NavigationHeader;
 import properies.CommonConfig;
 
-import static Utils.CredentialUtils.loginAs;
+import static Utils.AuthClient.loginAs;
 import static Utils.Users.getDefaultUser;
 import static com.codeborne.selenide.Selenide.open;
 import static java.lang.System.getProperties;

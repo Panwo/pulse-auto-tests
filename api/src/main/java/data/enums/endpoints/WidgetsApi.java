@@ -12,6 +12,6 @@ public enum WidgetsApi {
     WIDGET_GUID_BRIEF_DISABLED("/wbrt/widgets/%s/brief=false"),
     WIDGET_USCN("/wbrt/widgets?uscn=%s");
 
-    private final String path;
+    private final String endpoint;
 
 }

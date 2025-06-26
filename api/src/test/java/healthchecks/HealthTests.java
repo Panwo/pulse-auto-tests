@@ -2,25 +2,26 @@ package healthchecks;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import services.models.healthcheck.HealthStatusResponse;
+import services.healthcheck.HealthCheckRequests;
 
-import static data.enums.endpoints.HealthChecksApi.HEALTH_CHECK;
-import static data.enums.endpoints.HealthChecksApi.HEALTH_CHECK_DETAILS;
-import static services.RestClient.*;
+import static org.apache.http.HttpStatus.SC_OK;
+import static restwrapper.conditions.Conditions.statusCode;
 import static services.responcevalidators.HealthCheckValidator.assertValidHealthCheck;
 
 @Tag("healthCheck")
 class HealthTests {
 
+    private final HealthCheckRequests healthCheckRequests = new HealthCheckRequests();
+
     @Test
     void checkHealth() {
-        getRequestOk(HEALTH_CHECK.getEndpoint());
+        healthCheckRequests.getHealthResponse()
+                .shouldHave(statusCode(SC_OK));
     }
 
     @Test
     void checkHealthDetails() {
-        assertValidHealthCheck(getRequestOk(HEALTH_CHECK_DETAILS.getEndpoint())
-                .getResponseAsPojo(HealthStatusResponse.class));
+        assertValidHealthCheck(healthCheckRequests.getHealthStatus());
     }
 
 }

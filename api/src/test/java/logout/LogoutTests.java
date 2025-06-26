@@ -2,6 +2,7 @@ package logout;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import services.RestClient;
 
 import static Utils.AuthClient.loginAs;
 import static Utils.Users.getDefaultUser;
@@ -14,17 +15,19 @@ import static services.RestClient.*;
 @Tag("apiLogout")
 class LogoutTests {
 
+    private final RestClient restClient = new RestClient();
+
     @Test
     @Tag("smokeApi")
     void shouldBeAbleToLogOut() {
         loginAs(getDefaultUser());
-        getRequest(LOGOUT.getPath())
+        restClient.getRequest(LOGOUT.getPath())
                 .shouldHave(statusCode(SC_NO_CONTENT));
     }
 
     @Test
     void shouldFailLogoutWhenSessionIsInactive() {
-        getWithoutAuth(LOGOUT.getPath())
+        restClient.getWithoutAuth(LOGOUT.getPath())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 

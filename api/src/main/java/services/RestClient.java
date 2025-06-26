@@ -10,14 +10,14 @@ import static restwrapper.commons.CustomRequestSpecification.baseRequest;
 import static restwrapper.commons.CustomRequestSpecification.baseUrlWithLogging;
 import static restwrapper.conditions.Conditions.statusCode;
 import static files.FilesManager.deserialize;
-@UtilityClass
+
 public class RestClient {
 
-    public static AssertableResponse getRequest(String path) {
+    public AssertableResponse getRequest(String path) {
         return getRequest(path, getDefaultUser());
     }
 
-    public static AssertableResponse getRequest(String path, UserCredentialsDto user) {
+    public AssertableResponse getRequest(String path, UserCredentialsDto user) {
         return new AssertableResponse(baseRequest(user).get(path));
     }
 

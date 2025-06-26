@@ -1,6 +1,7 @@
 package security;
 
 import org.junit.jupiter.api.Test;
+import services.RestClient;
 
 import static data.enums.endpoints.HealthChecksApi.HEALTH_CHECK;
 import static data.enums.endpoints.HealthChecksApi.HEALTH_CHECK_DETAILS;
@@ -14,49 +15,50 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 import static restwrapper.conditions.Conditions.responseSchema;
 import static restwrapper.conditions.Conditions.statusCode;
-import static services.RestClient.getWithoutAuth;
 
 class UnauthorizedAccessTests {
 
+    private final RestClient restClient = new RestClient();
+
     @Test
     void shouldReturnUnauthorizedWhenAccessingTemplatesWithoutAuth() {
-        getWithoutAuth(TEMPLATES.getEndpoint())
+        restClient.getWithoutAuth(TEMPLATES.getEndpoint())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 
     @Test
     void shouldReturnUnauthorizedWhenAccessingLayoutsWithoutAuth() {
-        getWithoutAuth(LAYOUTS.getEndpoint())
+        restClient.getWithoutAuth(LAYOUTS.getEndpoint())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 
     @Test
     void shouldReturnUnauthorizedWhenAccessingWidgetsWithoutAuth() {
-        getWithoutAuth(WIDGETS.getEndpoint())
+        restClient.getWithoutAuth(WIDGETS.getEndpoint())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 
     @Test
     void shouldReturnUnauthorizedWhenAccessingTabsWithoutAuth() {
-        getWithoutAuth(TABS.getEndpoint())
+        restClient.getWithoutAuth(TABS.getEndpoint())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 
     @Test
     void shouldReturnUnauthorizedWhenAccessingUsersWithoutAuth() {
-        getWithoutAuth(USERS.getEndpoint())
+        restClient.getWithoutAuth(USERS.getEndpoint())
                 .shouldHave(statusCode(SC_UNAUTHORIZED));
     }
 
     @Test
     void shouldReturnResponseWhenAccessingHealthWithoutAuth() {
-        getWithoutAuth(HEALTH_CHECK.getEndpoint())
+        restClient.getWithoutAuth(HEALTH_CHECK.getEndpoint())
                 .shouldHave(statusCode(SC_OK));
     }
 
     @Test
     void shouldReturnResponseWhenAccessingHealthDetailsWithoutAuth() {
-        getWithoutAuth(HEALTH_CHECK_DETAILS.getEndpoint())
+        restClient.getWithoutAuth(HEALTH_CHECK_DETAILS.getEndpoint())
                 .shouldHave(responseSchema(HEALTH_RESPONSE_SCHEMA.getPath()));
     }
 

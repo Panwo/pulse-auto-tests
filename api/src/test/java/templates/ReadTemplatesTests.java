@@ -39,7 +39,7 @@ class ReadTemplatesTests {
 
     @Test
     void shouldHaveDefaultTemplates() {
-        String[] defaultTemplates = stream(DefaultTemplatesNames.values())
+        var defaultTemplates = stream(DefaultTemplatesNames.values())
                 .map(DefaultTemplatesNames::getType)
                 .toArray(String[]::new);
 
@@ -52,8 +52,8 @@ class ReadTemplatesTests {
     void shouldGetTemplatesByType(String templateType) {
         var templates = templatesRequests.getTemplatesWithTypeAsList(templateType);
 
-        boolean allMatchType = templates.stream()
-                .allMatch(t -> t.getDefinition().getLayoutType().equals(templateType));
+        var allMatchType = templates.stream()
+                .allMatch(template -> template.getDefinition().getLayoutType().equals(templateType));
 
         assertThat(templates.isEmpty() || allMatchType, is(true));
     }
@@ -70,8 +70,8 @@ class ReadTemplatesTests {
 
         var templatesFiltered = templatesRequests.getTemplatesWithUscnAndTypeAsList(VALID_USCN, regularTemplate)
                 .stream()
-                .allMatch(t -> t.getState().getUscn() > VALID_USCN
-                        && t.getDefinition().getLayoutType().equals(regularTemplate));
+                .allMatch(template -> template.getState().getUscn() > VALID_USCN
+                        && template.getDefinition().getLayoutType().equals(regularTemplate));
 
         assertThat(templatesFiltered, is(true));
     }
@@ -81,7 +81,7 @@ class ReadTemplatesTests {
         var templates = templatesRequests.getTemplatesWithUscnAsList(VALID_USCN);
 
         var templatesFiltered = templates.stream()
-                .allMatch(t -> t.getState().getUscn() > VALID_USCN);
+                .allMatch(template -> template.getState().getUscn() > VALID_USCN);
 
         assertThat(templatesFiltered, is(true));
     }

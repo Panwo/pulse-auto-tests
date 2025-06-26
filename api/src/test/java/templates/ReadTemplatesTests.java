@@ -8,15 +8,17 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import services.templates.TemplatesRequests;
 
+import java.math.BigInteger;
 import java.util.stream.Stream;
 
 import static com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.HttpStatus.SC_BAD_REQUEST;
 import static com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.HttpStatus.SC_OK;
 import static data.enums.jsonschemas.Schemas.TEMPLATE_RESPONSE_SCHEMA;
+import static java.lang.Long.MAX_VALUE;
 import static java.util.Arrays.stream;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.params.provider.Arguments.of;
 import static restwrapper.conditions.Conditions.*;
 
@@ -24,8 +26,7 @@ import static restwrapper.conditions.Conditions.*;
 @Tag("apiRegression")
 class ReadTemplatesTests {
 
-    private static final String EXISTING_TEMPLATE_GUID = "000000000000-0000-0000-0000-00000008";
-    private static final int FILTER_USCN = 1430;
+    private final long VALID_USCN = 1430;
     private final TemplatesRequests templatesRequests = new TemplatesRequests();
 
     @Test
@@ -38,26 +39,23 @@ class ReadTemplatesTests {
 
     @Test
     void shouldHaveDefaultTemplates() {
-        var defaultTemplates = stream(DefaultTemplatesNames.values())
-                .map(DefaultTemplatesNames::getType).toArray(String[]::new);
+        String[] defaultTemplates = stream(DefaultTemplatesNames.values())
+                .map(DefaultTemplatesNames::getType)
+                .toArray(String[]::new);
 
         templatesRequests.getTemplates()
                 .shouldHave(body("definition.name", hasItems(defaultTemplates)));
     }
 
-    @Test
-    void shouldGetTemplateByGuid() {
-        templatesRequests.getTemplateById(EXISTING_TEMPLATE_GUID)
-                .shouldHave(body("definition.guid", is(EXISTING_TEMPLATE_GUID)));
-    }
-
     @ParameterizedTest
     @MethodSource("typesWithExpectations")
-    void shouldGetTemplateByType(String templateType) {
+    void shouldGetTemplatesByType(String templateType) {
         var templates = templatesRequests.getTemplatesWithTypeAsList(templateType);
 
-        assertTrue(templates.isEmpty() || templates.stream()
-                .allMatch(template -> template.getDefinition().getLayoutType().equals(templateType)));
+        boolean allMatchType = templates.stream()
+                .allMatch(t -> t.getDefinition().getLayoutType().equals(templateType));
+
+        assertThat(templates.isEmpty() || allMatchType, is(true));
     }
 
     @Test
@@ -67,10 +65,46 @@ class ReadTemplatesTests {
     }
 
     @Test
-    void shouldFilterTemplatesByUscn() {
-        var templates = templatesRequests.getTemplatesWithUscn(FILTER_USCN);
+    void shouldGetTemplatesByUscnAndType() {
+        var regularTemplate = "ltPCREGULAR";
 
-        assertTrue(templates.stream().allMatch(template -> template.getState().getUscn() > FILTER_USCN));
+        var templatesFiltered = templatesRequests.getTemplatesWithUscnAndTypeAsList(VALID_USCN, regularTemplate)
+                .stream()
+                .allMatch(t -> t.getState().getUscn() > VALID_USCN
+                        && t.getDefinition().getLayoutType().equals(regularTemplate));
+
+        assertThat(templatesFiltered, is(true));
+    }
+
+    @Test
+    void shouldFilterTemplatesByUscn() {
+        var templates = templatesRequests.getTemplatesWithUscnAsList(VALID_USCN);
+
+        var templatesFiltered = templates.stream()
+                .allMatch(t -> t.getState().getUscn() > VALID_USCN);
+
+        assertThat(templatesFiltered, is(true));
+    }
+
+    @Test
+    void shouldReturnEmptyResponseForMaximumAllowedUscn() {
+        var templates = templatesRequests.getTemplatesWithUscnAsList(MAX_VALUE);
+        assertThat(templates.isEmpty(), is(true));
+    }
+
+    @ParameterizedTest
+    @MethodSource("invalidUscnNumbers")
+    void shouldReturnBadRequestWithInvalidUscn(Number uscn) {
+        templatesRequests.getTemplatesWithUscn(uscn)
+                .shouldHave(statusCode(SC_BAD_REQUEST));
+    }
+
+    @Test
+    void shouldGetTemplateByGuid() {
+        var EXISTING_TEMPLATE_GUID = "000000000000-0000-0000-0000-00000008";
+
+        templatesRequests.getTemplateById(EXISTING_TEMPLATE_GUID)
+                .shouldHave(body("definition.guid", is(EXISTING_TEMPLATE_GUID)));
     }
 
     static Stream<Arguments> typesWithExpectations() {
@@ -84,4 +118,10 @@ class ReadTemplatesTests {
         );
     }
 
+    static Stream<Arguments> invalidUscnNumbers() {
+        return Stream.of(
+                of(new BigInteger("9223372036854775808")),
+                of(-1)
+        );
+    }
 }

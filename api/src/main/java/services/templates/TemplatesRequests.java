@@ -36,9 +36,19 @@ public class TemplatesRequests extends RestClient {
                 .getResponseAsList(TemplateResponse[].class);
     }
 
-    public List<TemplateResponse> getTemplatesWithUscn(int uscn) {
+    public List<TemplateResponse> getTemplatesWithUscnAsList(long uscn) {
         return getRequestOk(format(TEMPLATES_USCN.getEndpoint(), uscn))
                 .getResponseAsList(TemplateResponse[].class);
+    }
+
+    public List<TemplateResponse> getTemplatesWithUscnAndTypeAsList(long uscn, String type) {
+        return getRequestOk(format(TEMPLATES_USCN_TYPE.getEndpoint(), uscn, type))
+                .shouldHave(statusCode(SC_OK))
+                .getResponseAsList(TemplateResponse[].class);
+    }
+
+    public AssertableResponse getTemplatesWithUscn(Number uscn) {
+        return getRequest(format(TEMPLATES_USCN.getEndpoint(), uscn.toString()));
     }
 
     public AssertableResponse getTemplatesWithType(String type) {

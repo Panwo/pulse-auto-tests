@@ -1,0 +1,12 @@
+{
+  "definition": {
+    "layout_type": "ltPCREGULAR",
+    "column": [
+      {
+        "id": "col1",
+        "type": "ctFORMULA",
+        "vt": "vINT"
+      }
+    ]
+  }
+}

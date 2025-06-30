@@ -13,6 +13,7 @@ import static restwrapper.conditions.Conditions.statusCode;
 import static services.RestClient.*;
 
 @Tag("apiLogout")
+@Tag("apiRegression")
 class LogoutTests {
 
     private final RestClient restClient = new RestClient();

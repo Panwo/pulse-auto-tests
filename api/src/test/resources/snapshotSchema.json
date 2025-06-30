@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "timestamp": { "type": "integer" },
+    "type": { "type": "string" },
+    "layout_type": { "type": "string" },
+    "state": {
+      "type": "object",
+      "properties": {
+        "current_status": { "type": "string" },
+        "body_hash_1": { "type": "integer" },
+        "body_hash_2": { "type": "integer" }
+      },
+      "required": ["current_status", "body_hash_1", "body_hash_2"]
+    },
+    "col": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "col": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "label": { "type": "string" },
+              "category": { "type": "string" },
+              "vt": { "type": "string" },
+              "format": { "type": "string" },
+              "is_delta_key": { "type": "boolean" }
+            },
+            "required": ["id", "vt"]
+          },
+          "v": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                { "type": "integer" },
+                { "type": "string" },
+                { "type": "number" }
+              ]
+            }
+          }
+        },
+        "required": ["col", "v"]
+      }
+    },
+    "generator_info": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" },
+        "timestamp": { "type": "integer" },
+        "cme_app_dbid": { "type": "integer" },
+        "cme_app_name": { "type": "string" },
+        "pulse_app_id": { "type": "integer" }
+      },
+      "required": ["name", "version", "timestamp", "cme_app_dbid", "cme_app_name", "pulse_app_id"]
+    },
+    "refresh_interval": { "type": "integer" },
+    "prop": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "k": { "type": "string" },
+          "v": {
+            "type": "object",
+            "properties": {
+              "vt": { "type": "string" },
+              "v": {
+                "anyOf": [
+                  { "type": "integer" },
+                  { "type": "string" },
+                  { "type": "number" }
+                ]
+              }
+            },
+            "required": ["v"]
+          }
+        },
+        "required": ["k", "v"]
+      }
+    },
+    "layout_guid": { "type": "string" },
+    "max_statistic_value_delay": { "type": "integer" },
+    "max_statistic_value_delay_timestamp": { "type": "integer" }
+  },
+  "required": [
+    "timestamp",
+    "type",
+    "layout_type",
+    "state",
+    "col",
+    "generator_info",
+    "refresh_interval",
+    "prop",
+    "layout_guid",
+    "max_statistic_value_delay",
+    "max_statistic_value_delay_timestamp"
+  ]
+}

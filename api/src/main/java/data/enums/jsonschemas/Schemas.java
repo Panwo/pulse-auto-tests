@@ -11,6 +11,7 @@ public enum Schemas {
     TEMPLATE_RESPONSE_SCHEMA("templateSchema.json"),
     USER_RESPONSE_SCHEMA("usersSchema.json"),
     LAYOUT_RESPONSE_SCHEMA("layoutSchema.json"),
+    SNAPSHOT_SCHEMA("snapshotSchema.json"),
     TAB_RESPONSE_SCHEMA("tabsSchema.json"),
     HEALTH_RESPONSE_SCHEMA("healthSchema.json");
 

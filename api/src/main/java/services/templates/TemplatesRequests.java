@@ -7,7 +7,7 @@ import services.models.template.TemplateResponse;
 import java.util.List;
 
 import static data.enums.endpoints.TemplatesApi.*;
-import static data.enums.requests.CreateRequestsData.TEMPLATE;
+import static data.enums.requests.TemplatesBody.TEMPLATE;
 import static java.lang.String.format;
 import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.apache.http.HttpStatus.SC_OK;
@@ -15,23 +15,27 @@ import static restwrapper.conditions.Conditions.statusCode;
 
 public class TemplatesRequests extends RestClient {
 
-    public String createTemplate() {
-        return postRequest(TEMPLATES.getEndpoint(), TEMPLATE.getBody())
+    public String createDefaultTemplate() {
+        return createTemplateAndGetResponse(TEMPLATE.getBody())
                 .shouldHave(statusCode(SC_CREATED))
                 .getResponseAsPojo(TemplateResponse.class)
                 .getDefinition().getGuid();
     }
 
-    public AssertableResponse getTemplates() {
+    public AssertableResponse createTemplateAndGetResponse(String templateBodyPath) {
+        return postRequest(TEMPLATES.getEndpoint(), templateBodyPath);
+    }
+
+    public AssertableResponse getTemplatesResponse() {
         return getRequest(TEMPLATES.getEndpoint());
     }
 
-    public AssertableResponse getTemplateById(String guid) {
+    public AssertableResponse getTemplateByIdResponse(String guid) {
         return getRequest(format(TEMPLATES_GUID.getEndpoint(), guid));
     }
 
     public List<TemplateResponse> getTemplatesWithTypeAsList(String type) {
-        return getTemplatesWithType(type)
+        return getTemplatesWithTypeResponse(type)
                 .shouldHave(statusCode(SC_OK))
                 .getResponseAsList(TemplateResponse[].class);
     }
@@ -47,11 +51,11 @@ public class TemplatesRequests extends RestClient {
                 .getResponseAsList(TemplateResponse[].class);
     }
 
-    public AssertableResponse getTemplatesWithUscn(Number uscn) {
+    public AssertableResponse getTemplatesWithUscnResponse(Number uscn) {
         return getRequest(format(TEMPLATES_USCN.getEndpoint(), uscn.toString()));
     }
 
-    public AssertableResponse getTemplatesWithType(String type) {
+    public AssertableResponse getTemplatesWithTypeResponse(String type) {
         return getRequest(format(TEMPLATES_TYPE.getEndpoint(), type));
     }
 

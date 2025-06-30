@@ -14,6 +14,7 @@ import static org.junit.Assert.*;
 import static restwrapper.conditions.Conditions.*;
 
 @Tag("apiUsers")
+@Tag("apiRegression")
 class UsersTests {
 
     private final String EXISTING_USER_ID = "02004c4f4f50-8c74-11f4-ab2e-460fbe41";

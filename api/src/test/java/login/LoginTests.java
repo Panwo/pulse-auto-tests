@@ -11,6 +11,7 @@ import static com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.http.Http
 import static java.lang.System.*;
 
 @Tag("apiLogin")
+@Tag("apiRegression")
 class LoginTests {
 
     @Test

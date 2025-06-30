@@ -10,6 +10,7 @@ import static restwrapper.conditions.Conditions.contentType;
 import static restwrapper.conditions.Conditions.responseSchema;
 
 @Tag("apiWidgets")
+@Tag("apiRegression")
 class WidgetsTests {
 
     private final WidgetsRequests widgetsRequests = new WidgetsRequests();

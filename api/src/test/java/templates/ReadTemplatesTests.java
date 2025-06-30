@@ -32,7 +32,7 @@ class ReadTemplatesTests {
     @Test
     @Tag("smokeApi")
     void shouldGetTemplates() {
-        templatesRequests.getTemplates()
+        templatesRequests.getTemplatesResponse()
                 .shouldHave(statusCode(SC_OK))
                 .shouldHave(responseSchema(TEMPLATE_RESPONSE_SCHEMA.getPath()));
     }
@@ -43,7 +43,7 @@ class ReadTemplatesTests {
                 .map(DefaultTemplatesNames::getType)
                 .toArray(String[]::new);
 
-        templatesRequests.getTemplates()
+        templatesRequests.getTemplatesResponse()
                 .shouldHave(body("definition.name", hasItems(defaultTemplates)));
     }
 
@@ -60,7 +60,7 @@ class ReadTemplatesTests {
 
     @Test
     void shouldReturnBadRequestForUnknownTemplateType() {
-        templatesRequests.getTemplatesWithType("ltREGULAR")
+        templatesRequests.getTemplatesWithTypeResponse("ltREGULAR")
                 .shouldHave(statusCode(SC_BAD_REQUEST));
     }
 
@@ -95,7 +95,7 @@ class ReadTemplatesTests {
     @ParameterizedTest
     @MethodSource("invalidUscnNumbers")
     void shouldReturnBadRequestWithInvalidUscn(Number uscn) {
-        templatesRequests.getTemplatesWithUscn(uscn)
+        templatesRequests.getTemplatesWithUscnResponse(uscn)
                 .shouldHave(statusCode(SC_BAD_REQUEST));
     }
 
@@ -103,7 +103,7 @@ class ReadTemplatesTests {
     void shouldGetTemplateByGuid() {
         var EXISTING_TEMPLATE_GUID = "000000000000-0000-0000-0000-00000008";
 
-        templatesRequests.getTemplateById(EXISTING_TEMPLATE_GUID)
+        templatesRequests.getTemplateByIdResponse(EXISTING_TEMPLATE_GUID)
                 .shouldHave(body("definition.guid", is(EXISTING_TEMPLATE_GUID)));
     }
 

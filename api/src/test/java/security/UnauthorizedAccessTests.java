@@ -1,5 +1,6 @@
 package security;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import services.RestClient;
 
@@ -16,6 +17,8 @@ import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 import static restwrapper.conditions.Conditions.responseSchema;
 import static restwrapper.conditions.Conditions.statusCode;
 
+@Tag("apiSecurity")
+@Tag("apiRegression")
 class UnauthorizedAccessTests {
 
     private final RestClient restClient = new RestClient();

@@ -1,4 +1,4 @@
-package services.responcevalidators;
+package services.responceverification;
 
 import lombok.experimental.UtilityClass;
 import services.models.healthcheck.Collector;
@@ -13,10 +13,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 @UtilityClass
-public class HealthCheckValidator {
+public class HealthCheckVerifier {
 
     public static void assertValidHealthCheck(HealthStatusResponse response) {
-        asserCoreConnectionsStatus(response);
+        assertCoreConnectionsStatus(response);
 
         response.getCollectors().values().forEach(
                 collector -> {
@@ -28,7 +28,7 @@ public class HealthCheckValidator {
         );
     }
 
-    private static void asserCoreConnectionsStatus(HealthStatusResponse response) {
+    private static void assertCoreConnectionsStatus(HealthStatusResponse response) {
         assertThat(response.getConfigServer().isConnected(), is(true));
         assertThat(response.getDatabase().isConnected(), is(true));
     }

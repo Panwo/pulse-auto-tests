@@ -6,8 +6,10 @@ import lombok.Data;
 
 import java.util.List;
 
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+
 @Data
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TabBody {
 

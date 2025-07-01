@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "body": {
+        "type": "object",
+        "properties": {
+          "guid": { "type": "string" },
+          "label": { "type": "string" },
+          "size_x": { "type": "integer" },
+          "size_y": { "type": "integer" },
+          "view": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": { "type": "string" },
+                "subtype": { "type": "string" },
+                "column_selector": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "row_selector": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "k": { "type": "string" },
+                      "v": {
+                        "type": "array",
+                        "items": { "type": "string" }
+                      }
+                    },
+                    "required": ["k", "v"]
+                  }
+                },
+                "prop": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "k": { "type": "string" },
+                      "v": {
+                        "type": "object",
+                        "properties": {
+                          "vt": { "type": "string" },
+                          "v": { "type": ["string", "number", "boolean"] }
+                        },
+                        "required": ["vt", "v"]
+                      }
+                    },
+                    "required": ["k", "v"]
+                  }
+                },
+                "table_column_width": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "k": { "type": "string" },
+                      "v": { "type": "string" }
+                    },
+                    "required": ["k", "v"]
+                  }
+                }
+              },
+              "required": ["type"]
+            }
+          },
+          "active_view": { "type": "string" },
+          "refresh_interval": { "type": "integer" },
+          "column_visibility": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "column_id": { "type": "string" },
+                "visibility": { "type": "string" }
+              },
+              "required": ["column_id", "visibility"]
+            }
+          },
+          "layout_guid": { "type": "string" },
+          "layout_body_hash": { "type": "integer" },
+          "user_guid": { "type": "string" },
+          "layout_hash_id": {
+            "type": "object",
+            "properties": {
+              "h0": { "type": "number" },
+              "h1": { "type": "number" },
+              "h2": { "type": "number" },
+              "h3": { "type": "integer" }
+            },
+            "required": ["h0", "h1", "h2", "h3"]
+          },
+          "hide_title": { "type": "boolean" },
+          "enable_agent_management": { "type": "boolean" }
+        },
+        "required": ["guid", "label", "view"]
+      },
+      "body_hash": { "type": "integer" },
+      "uscn": { "type": "integer" },
+      "requested_status": { "type": "string" }
+    },
+    "required": ["body", "body_hash", "uscn", "requested_status"]
+  }
+}

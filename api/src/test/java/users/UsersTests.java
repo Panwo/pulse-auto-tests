@@ -21,7 +21,7 @@ class UsersTests {
     private final UsersRequests usersRequests = new UsersRequests();
 
     @Test
-    @Tag("smoke")
+    @Tag("smokeApi")
     @Label("some dbid`s are missing")
     void shouldGetUsersList() {
         usersRequests.getUsersResponse()

@@ -2,7 +2,6 @@ package services.layouts;
 
 import restwrapper.response.AssertableResponse;
 import services.RestClient;
-import services.models.layouts.LayoutsResponse;
 
 import static data.enums.endpoints.LayoutsApi.*;
 import static java.lang.String.format;
@@ -23,10 +22,6 @@ public class LayoutsRequests extends RestClient {
 
     public AssertableResponse getLayoutSnapshotsResponse(String layoutId) {
         return getRequest(format(LAYOUT_GUID_SNAPSHOTS.getEndpoint(), layoutId));
-    }
-
-    public LayoutsResponse getLayouts() {
-        return new LayoutsResponse();
     }
 
 }

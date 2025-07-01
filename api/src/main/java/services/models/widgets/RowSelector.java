@@ -1,19 +1,19 @@
-package services.models.healthcheck;
+package services.models.widgets;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+
+import java.util.List;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(NON_NULL)
-public class ServerConnection {
+public class RowSelector {
 
-    private boolean connected;
-    private String instance;
-    private String connectionTimestamp;
-    private String disconnectTimestamp;
+    private String k;
+    private List<String> v;
 
 }

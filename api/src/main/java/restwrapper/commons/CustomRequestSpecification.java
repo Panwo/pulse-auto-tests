@@ -4,12 +4,12 @@ import Utils.UserCredentialsDto;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
-import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import properies.CommonConfig;
 
 import static Utils.SessionManager.getSessionId;
 import static io.restassured.RestAssured.given;
+import static io.restassured.http.ContentType.JSON;
 import static java.lang.System.getProperties;
 import static org.aeonbits.owner.ConfigFactory.create;
 
@@ -27,7 +27,7 @@ public class CustomRequestSpecification {
     public static RequestSpecification baseRequest(UserCredentialsDto user) {
         return baseUrlWithLogging()
                 .header("Cookie", "JSESSIONID=" + getSessionId(user))
-                .contentType(ContentType.JSON);
+                .contentType(JSON);
     }
 
 }

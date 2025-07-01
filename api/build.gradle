@@ -25,3 +25,10 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+task smokeApi(type: Test) {
+    outputs.upToDateWhen { false }
+    useJUnitPlatform {
+        includeTags 'smokeApi'
+    }
+}

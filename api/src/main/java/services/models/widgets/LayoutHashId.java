@@ -1,4 +1,4 @@
-package services.models.healthcheck;
+package services.models.widgets;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -9,11 +9,11 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(NON_NULL)
-public class ServerConnection {
+public class LayoutHashId {
 
-    private boolean connected;
-    private String instance;
-    private String connectionTimestamp;
-    private String disconnectTimestamp;
+    private long h0;
+    private long h1;
+    private long h2;
+    private int h3;
 
 }

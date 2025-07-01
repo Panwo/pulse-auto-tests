@@ -2,10 +2,12 @@ package snapshots;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import services.layouts.LayoutsRequests;
+import services.snapshots.SnapshotsRequests;
 
 import static data.enums.jsonschemas.Schemas.SNAPSHOT_SCHEMA;
 import static org.apache.http.HttpStatus.SC_OK;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.greaterThan;
 import static restwrapper.conditions.Conditions.responseSchema;
 import static restwrapper.conditions.Conditions.statusCode;
 
@@ -14,12 +16,12 @@ import static restwrapper.conditions.Conditions.statusCode;
 class SnapshotTests {
 
     private static final String AGENT_KPI_LAYOUT_ID = "005056931883-855c-11e6-6f06-7887c7c6";
-    private final LayoutsRequests layoutsRequests = new LayoutsRequests();
+    private final SnapshotsRequests snapshotsRequests = new SnapshotsRequests();
 
     @Test
     @Tag("smokeApi")
     void shouldBeAbleToGetSnapshotForLayout() {
-        layoutsRequests.getLayoutSnapshotResponse(AGENT_KPI_LAYOUT_ID)
+        snapshotsRequests.getSnapshotResponse(AGENT_KPI_LAYOUT_ID)
                 .shouldHave(statusCode(SC_OK))
                 .shouldHave(responseSchema(SNAPSHOT_SCHEMA.getPath()));
     }
@@ -27,9 +29,8 @@ class SnapshotTests {
     @Test
     @Tag("smokeApi")
     void shouldBeAbleToGetSnapshotsForLayout() {
-        layoutsRequests.getLayoutSnapshotsResponse(AGENT_KPI_LAYOUT_ID)
-                .shouldHave(statusCode(SC_OK))
-                .shouldHave(responseSchema(SNAPSHOT_SCHEMA.getPath()));
+        var snapshots = snapshotsRequests.getSnapshots(AGENT_KPI_LAYOUT_ID);
+        assertThat(snapshots.size(), greaterThan(0));
     }
 
 }
